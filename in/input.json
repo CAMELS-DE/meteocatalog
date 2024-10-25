@@ -1,15 +1,10 @@
 {
-    "foobar": {
+    "hyras": {
         "parameters": {
-            "foo_int": 42,
-            "foo_float": 13.37,
-            "foo_string": "Never eat yellow snow",
-            "foo_enum": "bar",
-            "foo_array": [34, 55, 23, 43, 23]
-        },
-        "data": {
-            "foo_matrix": "/in/foo_matrix.dat",
-            "foo_csv": "/in/foo_csv.csv"
+            "variables": "all",
+            "start_year": 2019,
+            "end_year": 2020,
+            "mode": "append"
         }
     }
 }
