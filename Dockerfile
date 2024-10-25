@@ -2,15 +2,15 @@
 FROM python:3.12
 
 # install the toolbox runner tools
-RUN pip install "json2args[data]>=0.6.2"
+RUN pip install "json2args>=0.6.2"
 
 # if you do not need data-preloading as your tool does that on its own
 # you can use this instread of the line above to use a json2args version
 # with less dependencies
 # RUN pip install json2args>=0.6.2
 
-# Do anything you need to install tool dependencies here
-RUN echo "Replace this line with a tool"
+# Install dependencies
+RUN pip install requests
 
 # create the tool input structure
 RUN mkdir /in
