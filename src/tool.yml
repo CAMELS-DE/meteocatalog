@@ -1,28 +1,39 @@
 tools:
-  foobar:
-    title: Foo Bar
-    description: A dummy tool to exemplify the YAML file
+  hyras:
+    title: HYRAS
+    description: Download HYRAS data from the DWD Climate Data Center
     version: 0.1
     parameters:
-      foo_int: 
-        type: integer
-      foo_float:
-        type: float
-      foo_string:
-        type: string
-      foo_enum:
+      variables: 
         type: enum
         values:
-          - foo
-          - bar
-          - baz
-      foo_array:
+          - all
+          - precipitation
+          - radiation
+          - humidity
+          - mean_temperature
+          - max_temperature
+          - min_temperature
+        description: |
+          The variables to download. If 'all' is selected, all 
+          variables will be downloaded.
+      start_year:
         type: integer
-        array: true
-    data:
-      foo_matrix:
-        extension: dat
-        description: A matrix file that can be read by numpy
-      foo_csv:
-        extension: csv
-        description: A standard formatted CSV file, for autoloading using pandas
+        min: 1931
+        max: 2020
+        description: |
+          The start year of the data to download. For precipitation,
+          the data starts in 1931. For other variables, the data starts
+          in 1951. 
+      end_year:
+        type: integer
+        min: 1931
+        max: 2020
+        description: |
+          The end year of the data to download. The data is available
+          up to 2020.
+      mode:
+        type: enum
+        values:
+          - replace
+          - append
