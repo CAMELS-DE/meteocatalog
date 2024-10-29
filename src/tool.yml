@@ -37,3 +37,36 @@ tools:
         values:
           - replace
           - append
+        description: |
+          The mode to use when downloading the data. If 'replace' is
+          selected, the data will be replaced. If 'append' is selected,
+          the data will be appended to the existing data.
+  radklim_rw:
+    title: Radklim-RW
+    description: |
+      Download RadKlim RW hourly precipitation data from the 
+      DWD Climate Data Center.
+    version: 0.1
+    parameters:
+      start_year:
+        type: integer
+        min: 2001
+        max: 2023
+        description: |
+          The start year of the data to download. The data starts in 1931.
+      end_year:
+        type: integer
+        min: 2001
+        max: 2023
+        description: |
+          The end year of the data to download. The data is available
+          up to 2023.
+      mode:
+        type: enum
+        values:
+          - replace
+          - append
+        description: |
+          The mode to use when downloading the data. If 'replace' is
+          selected, the data will be replaced. If 'append' is selected,
+          the data will be appended to the existing data.
