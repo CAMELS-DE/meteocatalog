@@ -4,7 +4,7 @@ from pprint import pprint
 
 from json2args import get_parameter, logger
 
-from datasets import hyras, radklim_rw
+from datasets import hyras, radklim_rw, hostrada
 
 
 # parse parameters
@@ -33,6 +33,16 @@ elif toolname == "radklim_rw":
 
     # run the tool
     radklim_rw.download_radklim()
+
+elif toolname == "hostrada":
+    # log
+    logger.info(f"Running the HOSTRADA downloading tool.")
+    
+    # write parameters to STDOUT.log
+    pprint(parameters)
+
+    # run the tool
+    hostrada.download_hostrada()
     
 
 # In any other case, it was not clear which tool to run
