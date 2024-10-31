@@ -14,5 +14,14 @@
             "end_year": 2020,
             "mode": "append"
         }
+    },
+    "hostrada":
+    {
+        "parameters": {
+            "variables": "all",
+            "start_year": 2019,
+            "end_year": 2020,
+            "mode": "append"
+        }
     }
 }
