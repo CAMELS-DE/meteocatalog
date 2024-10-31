@@ -70,3 +70,49 @@ tools:
           The mode to use when downloading the data. If 'replace' is
           selected, the data will be replaced. If 'append' is selected,
           the data will be appended to the existing data.
+  hostrada:
+    title: Hostrada
+    description: |
+      Download Hostrada data from the DWD Climate Data Center.
+    version: 0.1
+    parameters:
+      variables: 
+        type: enum
+        values:
+          - all
+          - cloud_cover
+          - wind_speed
+          - wind_direction
+          - air_temperature_mean
+          - dew_point_temperature
+          - relative_humidity
+          - water_vapor_mixing_ratio
+          - air_pressure_sea_level
+          - air_pressure_surface
+          - global_shortwave_radiation
+          - urban_heat_island_intensity
+        description: |
+          The variables to download. If 'all' is selected, all 
+          variables will be downloaded.
+      start_year:
+        type: integer
+        min: 1995
+        max: 2024
+        description: |
+          The start year of the data to download. The data starts in 1995.
+      end_year:
+        type: integer
+        min: 1995
+        max: 2024
+        description: |
+          The end year of the data to download. The data is available
+          up to 2024.
+      mode:
+        type: enum
+        values:
+          - replace
+          - append
+        description: |
+          The mode to use when downloading the data. If 'replace' is
+          selected, the data will be replaced. If 'append' is selected,
+          the data will be appended to the existing data.
