@@ -116,3 +116,35 @@ tools:
           The mode to use when downloading the data. If 'replace' is
           selected, the data will be replaced. If 'append' is selected,
           the data will be appended to the existing data.
+  soil_moist_dwd:
+    title: DWD Soil Moisture
+    description: |
+      Download soil moisture data from the DWD Climate Data Center.
+    version: 0.1
+    parameters:
+      start_year:
+        type: integer
+        min: 1991
+        max: 2024
+        description: |
+          The start year of the data to download. The data starts in 1991.
+      end_year:
+        type: integer
+        min: 1991
+        max: 2024
+        description: |
+          The end year of the data to download. The data is available
+          up to 2024.
+      mode:
+        type: enum
+        values:
+          - replace
+          - append
+        description: |
+          The mode to use when downloading the data. If 'replace' is
+          selected, the data will be replaced. If 'append' is selected,
+          the data will be appended to the existing data.
+      ascii_to_netcdf:
+        type: boolean
+        description: |
+          Convert the downloaded ASCII files to NetCDF format.
