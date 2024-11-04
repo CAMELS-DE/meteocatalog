@@ -4,7 +4,7 @@ from pprint import pprint
 
 from json2args import get_parameter, logger
 
-from datasets import hyras, radklim_rw, hostrada
+from datasets import hyras, radklim_rw, hostrada, soil_moist_dwd
 
 
 # parse parameters
@@ -43,6 +43,16 @@ elif toolname == "hostrada":
 
     # run the tool
     hostrada.download_hostrada()
+
+elif toolname == "soil_moist_dwd":
+    # log
+    logger.info(f"Running the DWD soil moisture downloading tool.")
+    
+    # write parameters to STDOUT.log
+    pprint(parameters)
+
+    # run the tool
+    soil_moist_dwd.download_dwd_soil_moist()
     
 
 # In any other case, it was not clear which tool to run

@@ -10,7 +10,7 @@ RUN pip install "json2args>=0.6.2"
 # RUN pip install json2args>=0.6.2
 
 # Install dependencies
-RUN pip install requests
+RUN pip install requests pandas xarray[io] rioxarray
 
 # create the tool input structure
 RUN mkdir /in
