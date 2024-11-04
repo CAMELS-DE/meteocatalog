@@ -4,7 +4,7 @@ from pprint import pprint
 
 from json2args import get_parameter, logger
 
-from datasets import hyras, radklim_rw, hostrada, soil_moist_dwd
+from datasets import hyras, radklim_rw, hostrada, soil_moist_dwd, eobs
 
 
 # parse parameters
@@ -53,6 +53,16 @@ elif toolname == "soil_moist_dwd":
 
     # run the tool
     soil_moist_dwd.download_dwd_soil_moist()
+
+elif toolname == "eobs":
+    # log
+    logger.info(f"Running the E-OBS downloading tool.")
+    
+    # write parameters to STDOUT.log
+    pprint(parameters)
+
+    # run the tool
+    eobs.download_eobs()
     
 
 # In any other case, it was not clear which tool to run
