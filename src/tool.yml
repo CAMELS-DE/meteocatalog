@@ -148,3 +148,38 @@ tools:
         type: boolean
         description: |
           Convert the downloaded ASCII files to NetCDF format.
+  eobs:
+    title: E-OBS
+    description: |
+      Download E-OBS data from Copernicus in the 0.1 deg regular grid. 
+      The E-OBS version is 30.0e which was released in September 2024. 
+      Downloaded files are the respective ensemble mean files.
+    version: 0.1
+    parameters:
+      variables: 
+        type: enum
+        values:
+          - all
+          - precipitation
+          - radiation
+          - humidity
+          - mean_temperature
+          - max_temperature
+          - min_temperature
+          - air_pressure_sea_level
+          - wind_speed
+        description: |
+          The variables to download. If 'all' is selected, all 
+          variables will be downloaded. E-Obs is available as 
+          one netCDF file for each variable over the entire time
+          period. The data for all variables starts in 1950 except 
+          for wind speed, where it only starts in 1980.
+      mode:
+        type: enum
+        values:
+          - replace
+          - append
+        description: |
+          The mode to use when downloading the data. If 'replace' is
+          selected, the data will be replaced. If 'append' is selected,
+          the data will be appended to the existing data.
