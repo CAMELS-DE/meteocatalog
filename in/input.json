@@ -32,5 +32,12 @@
             "mode": "append",
             "ascii_to_netcdf": true
         }
+    },
+    "eobs":
+    {
+        "parameters": {
+            "variables": "all",
+            "mode": "append"
+        }
     }
 }
