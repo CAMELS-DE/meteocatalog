@@ -23,5 +23,14 @@
             "end_year": 2020,
             "mode": "append"
         }
+    },
+    "soil_moist_dwd":
+    {
+        "parameters": {
+            "start_year": 2019,
+            "end_year": 2020,
+            "mode": "append",
+            "ascii_to_netcdf": true
+        }
     }
 }
