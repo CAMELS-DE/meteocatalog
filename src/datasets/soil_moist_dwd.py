@@ -35,6 +35,10 @@ def ascii_to_netcdf(start_year: int, end_year: int, mode: str):
             # Find the .asc files for the year and month
             asc_files = sorted(glob(f"/out/dwd_soil_moist/soil_moisture/{year}/grids_germany_daily_soil_moist_{year}{month:02d}*.asc"))
 
+            # data is updated monthly, so for the last year, we need to check if the data is available
+            if not asc_files:
+                continue
+
             # List to hold DataArrays for each day
             daily_data = []
 
@@ -147,6 +151,12 @@ def download_dwd_soil_moisture(start_year: int, end_year: int, mode: str, ascii_
             url = f"https://opendata.dwd.de/climate_environment/CDC/grids_germany/daily/soil_moist/grids_germany_daily_soil_moist_{year}{month:02d}.tgz"
         
             response = requests.get(url)
+
+            # data is updated monthly, so for the last year, we need to check if the data is available
+            if response.status_code != 200:
+                logger.error(f"Failed to download the data for {year}-{month}.")
+                continue
+
             with open(f"/out/dwd_soil_moist/soil_moisture/{year}/grids_germany_daily_soil_moist_{year}{month:02d}.tgz", "wb") as f:
                 f.write(response.content)
 
