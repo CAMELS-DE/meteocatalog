@@ -39,5 +39,14 @@
             "variables": "all",
             "mode": "append"
         }
+    },
+    "init_meteocatalog":
+    {
+        "parameters": {
+            "variables": "all",
+            "start_year": 1931,
+            "end_year": 2024,
+            "mode": "replace"
+        }
     }
 }
