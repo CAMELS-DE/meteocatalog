@@ -5,6 +5,7 @@ from pprint import pprint
 from json2args import get_parameter, logger
 
 from datasets import hyras, radklim_rw, hostrada, soil_moist_dwd, eobs
+from util import init_meteocatalog
 
 
 # parse parameters
@@ -63,6 +64,16 @@ elif toolname == "eobs":
 
     # run the tool
     eobs.download_eobs()
+
+elif toolname == "init_meteocatalog":
+    # log
+    logger.info(f"Running the meteocatalog initialization tool to download all datasets.")
+    
+    # write parameters to STDOUT.log
+    pprint(parameters)
+
+    # run the tool
+    init_meteocatalog.download_all()
     
 
 # In any other case, it was not clear which tool to run
