@@ -14,6 +14,7 @@ tools:
           - mean_temperature
           - max_temperature
           - min_temperature
+        default: all
         description: |
           The variables to download. If 'all' is selected, all 
           variables will be downloaded.
@@ -21,6 +22,7 @@ tools:
         type: integer
         min: 1931
         max: 2020
+        default: 1931
         description: |
           The start year of the data to download. For precipitation,
           the data starts in 1931. For other variables, the data starts
@@ -29,6 +31,7 @@ tools:
         type: integer
         min: 1931
         max: 2020
+        default: 2020
         description: |
           The end year of the data to download. The data is available
           up to 2020.
@@ -37,6 +40,7 @@ tools:
         values:
           - replace
           - append
+        default: replace
         description: |
           The mode to use when downloading the data. If 'replace' is
           selected, the data will be replaced. If 'append' is selected,
@@ -52,12 +56,14 @@ tools:
         type: integer
         min: 2001
         max: 2023
+        default: 2001
         description: |
           The start year of the data to download. The data starts in 1931.
       end_year:
         type: integer
         min: 2001
         max: 2023
+        default: 2023
         description: |
           The end year of the data to download. The data is available
           up to 2023.
@@ -66,6 +72,7 @@ tools:
         values:
           - replace
           - append
+        default: replace
         description: |
           The mode to use when downloading the data. If 'replace' is
           selected, the data will be replaced. If 'append' is selected,
@@ -91,6 +98,7 @@ tools:
           - air_pressure_surface
           - global_shortwave_radiation
           - urban_heat_island_intensity
+        default: all
         description: |
           The variables to download. If 'all' is selected, all 
           variables will be downloaded.
@@ -98,12 +106,14 @@ tools:
         type: integer
         min: 1995
         max: 2024
+        default: 1995
         description: |
           The start year of the data to download. The data starts in 1995.
       end_year:
         type: integer
         min: 1995
         max: 2024
+        default: 2024
         description: |
           The end year of the data to download. The data is available
           up to 2024.
@@ -112,6 +122,7 @@ tools:
         values:
           - replace
           - append
+        default: replace
         description: |
           The mode to use when downloading the data. If 'replace' is
           selected, the data will be replaced. If 'append' is selected,
@@ -126,12 +137,14 @@ tools:
         type: integer
         min: 1991
         max: 2024
+        default: 1991
         description: |
           The start year of the data to download. The data starts in 1991.
       end_year:
         type: integer
         min: 1991
         max: 2024
+        default: 2024
         description: |
           The end year of the data to download. The data is available
           up to 2024.
@@ -140,12 +153,14 @@ tools:
         values:
           - replace
           - append
+        default: replace
         description: |
           The mode to use when downloading the data. If 'replace' is
           selected, the data will be replaced. If 'append' is selected,
           the data will be appended to the existing data.
       ascii_to_netcdf:
         type: boolean
+        default: true
         description: |
           Convert the downloaded ASCII files to NetCDF format.
   eobs:
@@ -168,6 +183,7 @@ tools:
           - min_temperature
           - air_pressure_sea_level
           - wind_speed
+        default: all
         description: |
           The variables to download. If 'all' is selected, all 
           variables will be downloaded. E-Obs is available as 
@@ -179,6 +195,7 @@ tools:
         values:
           - replace
           - append
+        default: replace
         description: |
           The mode to use when downloading the data. If 'replace' is
           selected, the data will be replaced. If 'append' is selected,
@@ -188,13 +205,16 @@ tools:
     description: |
       Initialize meteocatalog with all the available data sources.  
       This will download all variables from all the dataset above and 
-      the entire time period.
+      the entire time period. The default parameters for all datasets
+      are used, which download all variables for the entire time period 
+      and replace the existing data.
     version: 0.1
     parameters:
       variables:
         type: enum
         values:
           - all
+        default: all
         description: |
           The variables to download. If 'all' is selected, all 
           variables will be downloaded.
@@ -202,12 +222,14 @@ tools:
         type: integer
         min: 1931
         max: 2024
+        default: 1931
         description: |
           The start year of the data to download. The data starts in 1931.
       end_year:
         type: integer
         min: 1931
         max: 2024
+        default: 2024
         description: |
           The end year of the data to download. The data is available
           up to 2024.
@@ -216,7 +238,14 @@ tools:
         values:
           - replace
           - append
+        default: replace
         description: |
           The mode to use when downloading the data. If 'replace' is
           selected, the data will be replaced. If 'append' is selected,
           the data will be appended to the existing data.
+      ascii_to_netcdf:
+        type: boolean
+        default: true
+        description: |
+          Convert the downloaded DWD soil moisture ASCII files to NetCDF 
+          format.
