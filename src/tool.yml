@@ -167,7 +167,9 @@ tools:
     title: E-OBS
     description: |
       Download E-OBS data from Copernicus in the 0.1 deg regular grid. 
-      The E-OBS version is 30.0e which was released in September 2024. 
+      The E-OBS version is 28.0e which was released in October 2023. 
+      Version 28.0e is used as this is the latest version for which 
+      all variables are available. 
       Downloaded files are the respective ensemble mean files.
     version: 0.1
     parameters:

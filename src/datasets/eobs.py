@@ -21,7 +21,7 @@ def generate_filename(variable: str) -> str:
         "wind_speed": "fg"
     }
     abbreviation = abbreviations[variable]
-    return f"{abbreviation}_ens_mean_0.1deg_reg_v30.0e.nc"
+    return f"{abbreviation}_ens_mean_0.1deg_reg_v28.0e.nc"
 
 def download_eobs_variable(variable: str, mode: str):
     """
