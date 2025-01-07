@@ -1,6 +1,6 @@
 import os
 import requests
-import tarfile
+import calendar
 
 from json2args import get_parameter, logger
 
@@ -24,7 +24,8 @@ def generate_filename(variable: str, year: int, month: int) -> str:
         "urban_heat_island_intensity": "uhi"
     }
     abbreviation = abbreviations[variable]
-    return f"{abbreviation}_1hr_HOSTRADA-v1-0_BE_gn_{year}{month:02d}0100-{year}{month:02d}3123.nc"
+    last_day = calendar.monthrange(year, month)[1]
+    return f"{abbreviation}_1hr_HOSTRADA-v1-0_BE_gn_{year}{month:02d}0100-{year}{month:02d}{last_day}23.nc"
 
 def download_hostrada_variable(variable: str, start_year: int, end_year: int, mode: str):
     """
@@ -64,7 +65,14 @@ def download_hostrada_variable(variable: str, start_year: int, end_year: int, mo
         for month in range(1, 13):
             filename = generate_filename(variable, year, month)
 
-            url = f"https://opendata.dwd.de/climate_environment/CDC/grids_germany/hourly/{variable}/{filename}"
+            url = f"https://opendata.dwd.de/climate_environment/CDC/grids_germany/hourly/hostrada/{variable}/{filename}"
+
+            # Check if the URL exists
+            head_response = requests.head(url)
+            if head_response.status_code != 200:
+                logger.info(f"Data for '{url}' is not available, check if the url is correct.")
+                continue
+
             response = requests.get(url)
             with open(f"/out/hostrada/{variable}/{year}/{filename}", "wb") as f:
                 f.write(response.content)
