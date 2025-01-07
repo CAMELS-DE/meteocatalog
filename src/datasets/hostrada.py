@@ -26,7 +26,8 @@ def generate_filename(variable: str, year: int, month: int) -> str:
     abbreviation = abbreviations[variable]
     last_day = calendar.monthrange(year, month)[1]
     return f"{abbreviation}_1hr_HOSTRADA-v1-0_BE_gn_{year}{month:02d}0100-{year}{month:02d}{last_day}23.nc"
-
+    "https://opendata.dwd.de/climate_environment/CDC/grids_germany/hourly/hostrada/dew_point/tdew_1hr_HOSTRADA-v1-0_BE_gn_1995010100-1995013123.nc"
+    "https://opendata.dwd.de/climate_environment/CDC/grids_germany/hourly/hostrada/dew_point_temperature/tdew_1hr_HOSTRADA-v1-0_BE_gn_1995010100-1995013123.nc"
 def download_hostrada_variable(variable: str, start_year: int, end_year: int, mode: str):
     """
     Generalized function to download hostrada variables.
@@ -65,14 +66,28 @@ def download_hostrada_variable(variable: str, start_year: int, end_year: int, mo
         for month in range(1, 13):
             filename = generate_filename(variable, year, month)
 
+            # get the correct url for some variables (renamed in tool for better naming)
+            if variable == "dew_point_temperature":
+                variable = "dew_point"
+            elif variable == "relative_humidity":
+                variable = "humidity_relative"
+            elif variable == "water_vapor_mixing_ratio":
+                variable = "humidity_mixing_ratio"
+            elif variable == "air_pressure_surface":
+                variable = "pressure_surface"
+            elif variable == "global_shortwave_radiation":
+                variable = "radiation_downwelling"
+
+            # create the URL
             url = f"https://opendata.dwd.de/climate_environment/CDC/grids_germany/hourly/hostrada/{variable}/{filename}"
 
-            # Check if the URL exists
+            # check if the URL exists
             head_response = requests.head(url)
             if head_response.status_code != 200:
                 logger.info(f"Data for '{url}' is not available, check if the url is correct.")
                 continue
-
+            
+            # get response and write to file
             response = requests.get(url)
             with open(f"/out/hostrada/{variable}/{year}/{filename}", "wb") as f:
                 f.write(response.content)
