@@ -74,6 +74,8 @@ def download_hostrada_variable(variable: str, start_year: int, end_year: int, mo
                 variable_url = "humidity_mixing_ratio"
             elif variable == "air_pressure_surface":
                 variable_url = "pressure_surface"
+            elif variable == "air_pressure_sea_level":
+                variable_url = "pressure_sealevel"
             elif variable == "global_shortwave_radiation":
                 variable_url = "radiation_downwelling"
             else:
